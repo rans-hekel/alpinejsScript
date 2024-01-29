@@ -7,30 +7,55 @@
     <title>AlpineJS learn CDN</title>
 </head>
 <body>
-    <div x-data="{nama : 'Rangga', angka: 2, link: '<a href=\'https://www.google.com\'>rangga</a>', open: false }" class="container mx-auto w-1/2 text-center mt-10 bg-lime-200 p-10 rounded-xl shadow">
-        <!-- <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-pink-400 bg-clip-text text-transparent drop-shadow-sm">
+    <!-- <div x-data="{nama : 'Rangga', angka: 2, link: '<a href=\'https://www.google.com\'>rangga</a>', open: false }" class="container mx-auto w-1/2 text-center mt-10 bg-lime-200 p-10 rounded-xl shadow">
+        <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-pink-400 bg-clip-text text-transparent drop-shadow-sm">
             Haloo, <span x-text="nama"></span> adalah bilangan : <span x-text="angka % 2 === 0 ? 'Genap' : 'Ganjil'"></span>
         </h1>
         <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-pink-400 bg-clip-text text-transparent drop-shadow-sm">
             Haloo, <span x-html="link"></span>
-        </h1> -->
+        </h1>
         <button @click="open = !open" x-text="open ? 'Tutup' : 'Buka'" x-bind:class="open ? 'bg-cyan-600' : 'bg-slate-600'"  class="py-2 px-5 text-white rounded-md" @keyup.esc.window="open = false"></button>
         <div x-show="open"  x-transition:enter.origin.top.left.duration.1000ms
         x-transition:leave.duration.1000ms class="w-3/4 mx-auto mt-4 p-5 bg-blue-400 rounded text-white">
             Lorem, ipsum dolor sit....
         </div>
 
-    </div>
-
-    <!-- <div x-data="{ pesan: 'Hallo '}" class="container mx-auto w-3/4 text-center mt-10 bg-red-200 p-10 rounded-xl shadow">
+    </div> -->
+<!-- 
+    <div x-data="{ pesan: 'Hallo '}" class="container mx-auto w-3/4 text-center mt-10 bg-red-200 p-10 rounded-xl shadow">
         <button @click="ubahWarna" id="tombolPesan" class="py-2 px-5 bg-blue-400 text-white rounded-md">Klik Saya!</button>
     </div> -->
     <!-- <div x-data="{ pesan: 'Hallo '}" @log="alert('data terkirim oleh ' + $event.detail.pesan)" class="container mx-auto w-3/4 text-center mt-10 bg-red-200 p-10 rounded-xl shadow">
         <label for="nama" class="text-sm font-medium text-gray-900 block mb-2">Masukan Nama</label>
         <input type="text" @keyup="pesan = $event.target.value" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama">
         <button @click="$dispatch('log', { pesan: pesan})"  class="py-2 px-5 bg-blue-400 text-white rounded-md mt-3">Klik Saya!</button>
+    </div> -->
+    <div x-data="{ pesan : '',open : '', hobby : []}"  class="container mx-auto w-3/4 text-center mt-10 bg-red-200 p-10 rounded-xl shadow">
+        <label for="nama" class="text-sm font-medium text-gray-900 block mb-2">Masukan Nama</label>
+        <textarea type="text" x-model="pesan" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukan Nama"></textarea>
+        <span x-text="pesan.length" class="text-lg flex text-green-500 font-bold" x-bind:class="pesan.length > 10 ? 'text-red-500' : ''"></span>
+
+        <input type="checkbox" name="checkbox" id="checkbox" x-model="open">
+        <label for="checkbox" x-text="open ? 'Terisi' : 'Kosong'"></label>
+
+        <div class="mt-5">
+            <div class="flex items-center mb-2">
+                <input type="checkbox" id="menulis" x-model="hobby" value="menulis" class="w-4 h-4 text-blue-600 border-gray-300 rounded">
+                <label for="menulis" class="ml-2 text-sm ">Menulis</label>
+            </div>
+            <div class="flex items-center mb-2">
+                <input type="checkbox" id="belajar" x-model="hobby" value="belajar" class="w-4 h-4 text-blue-600 border-gray-300 rounded">
+                <label for="belajar" class="ml-2 text-sm ">belajar</label>
+            </div>
+            <div class="flex items-center mb-2">
+                <input type="checkbox" id="ngoding" x-model="hobby" value="ngoding" class="w-4 h-4 text-blue-600 border-gray-300 rounded">
+                <label for="ngoding" class="ml-2 text-sm ">Ngoding</label>
+            </div>
+            <p class="text-left text-sm">Hobby: <span x-text="hobby.map((x) => x.charAt(0).toUpperCase() + x.slice(1))"></span> </p>
+        </div>
+
     </div>
-     -->
+    
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <!-- <script> 
     function ubahWarna(e){
